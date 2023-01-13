@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "master-rpc",
+  "version": "1.0.0",
+  "description": "Master RPC is a simple and easy to use RPC library",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepDoge/master-rpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DeepDoge/master-rpc/issues"
+  },
+  "homepage": "https://github.com/DeepDoge/master-rpc#readme",
+  "devDependencies": {
+    "zod": "^3.20.2"
+  }
+}
