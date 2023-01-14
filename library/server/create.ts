@@ -1,9 +1,13 @@
-import type { z } from "zod"
-import type { RpcFunction } from "../types"
+import type { RpcFunction, RpcInputParser } from "../types"
 
 if (typeof window !== 'undefined') throw new Error('RPC should only be created on the server side.')
 
-export function createRpcFunction<Z extends Zod.ZodObject<any>, F extends (args: z.infer<Z>) => Promise<any>>(zod: Z, rpc: F)
+export function createRpcFunction<
+    IN extends any[] = any[],
+    OUT = any,
+    P extends RpcInputParser<IN> = RpcInputParser<IN>,
+    F extends (...input: IN) => Promise<OUT> = (...input: IN) => Promise<OUT>
+>(parser: P, rpc: F): RpcFunction<IN, OUT, P, F>
 {
-    return { zod, rpc } as RpcFunction<Z, F>
+    return { parser, rpc } as RpcFunction<IN, OUT, P, F>
 }

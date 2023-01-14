@@ -1,8 +1,13 @@
-import type { z } from "zod"
+export type RpcInputParser<IN extends any[]> = (input: IN) => IN
 
-export interface RpcFunction<Z extends Zod.ZodObject<any> = Zod.ZodObject<any>, F extends (args: z.infer<Z>) => Promise<any> = (args: any) => Promise<any>>
+export interface RpcFunction<
+    IN extends any[] = any,
+    OUT = any,
+    P extends RpcInputParser<IN> = RpcInputParser<IN>,
+    F extends (...input: IN) => Promise<OUT> = (...input: IN) => Promise<OUT>
+>
 {
-    zod: Z
+    parser: P
     rpc: F
 }
 

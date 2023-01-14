@@ -10,8 +10,5 @@
   "bugs": {
     "url": "https://github.com/DeepDoge/master-rpc/issues"
   },
-  "homepage": "https://github.com/DeepDoge/master-rpc#readme",
-  "devDependencies": {
-    "zod": "^3.20.2"
-  }
+  "homepage": "https://github.com/DeepDoge/master-rpc#readme"
 }
