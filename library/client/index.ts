@@ -9,7 +9,7 @@ export type RpcClient<Functions extends RpcFunctions> = {
 export function createRpcProxyClient<Functions extends RpcFunctions>(url: string, method: RequestInit['method']): RpcClient<Functions>
 {
     const client = new Proxy({} as RpcClient<Functions>, {
-        get: (_, key: string) => async (args: any) =>
+        get: (_, key: string) => async (...args: any) =>
         {
             const response = await fetch(url, {
                 method,
