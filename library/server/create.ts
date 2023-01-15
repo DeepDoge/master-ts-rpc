@@ -2,7 +2,7 @@ if (typeof window !== 'undefined') throw new Error('RPC should only be created o
 
 export type RpcInputParser<Args extends any[]> = (args: Args) => Args
 export type RpcFunction = ReturnType<typeof createRpcFunction>
-export type RpcFunctions<K extends string = string> = Record<K, RpcFunction>
+export type RpcFunctions = Record<string, RpcFunction>
 
 export function createRpcFunction<
     P extends RpcInputParser<any>,
