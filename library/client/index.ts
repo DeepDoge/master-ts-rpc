@@ -26,10 +26,10 @@ export function createRpcProxyClient<Functions extends RpcFunctions>(url: string
 export function createRpcLocalClient<Functions extends RpcFunctions>(apiHandler: Promise<RpcApiHandler<Functions>>): RpcClient<Functions>
 {
     return new Proxy({} as RpcClient<Functions>, {
-        get: (_, key: any) => async (input: any) =>
+        get: (_, key: string) => async (args: any) =>
         {
             const handler = await apiHandler
-            return await handler({ key, input })
+            return await handler({ key, args })
         }
     })
 }
