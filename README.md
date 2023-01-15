@@ -11,6 +11,8 @@ npm i https://github.com/DeepDoge/master-rpc.git -D
 ## Example Usage with SveltKit
 We first need rpc functions to be defined. 
 
+`createRpcFunction` takes two parameters, the parser and the rpc function itself.
+
 *src/plugin/rpc/functions/greeting.ts*
 ```ts
 import { createRpcFunction } from "master-rpc/library/server/create"
