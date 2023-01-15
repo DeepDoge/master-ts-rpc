@@ -110,7 +110,7 @@ import type { rpcFunctions } from '$/plugins/rpc/functions'
 
 export function createRpcClient()
 {
-    if (typeof window !== 'undefined') return createRpcProxyClient<typeof rpcFunctions>('/api/rpc', 'POST')
+    if (typeof window !== 'undefined') return createRpcProxyClient<typeof rpcFunctions>('/rpc', 'POST')
     const handlerPromise = import('./server').then(m => m.rpcApiHandler)
     return createRpcLocalClient<typeof rpcFunctions>(handlerPromise)
 }
