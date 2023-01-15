@@ -3,7 +3,7 @@ import type { RpcApiHandler } from "../server/api"
 import type { RpcFunctions } from "../server/create"
 
 export type RpcClient<Functions extends RpcFunctions> = {
-    [K in keyof Functions]: (args: ReturnType<Functions[K]['parser']>) => ReturnType<Functions[K]['rpc']>
+    [K in keyof Functions]: (...args: ReturnType<Functions[K]['parser']>) => ReturnType<Functions[K]['rpc']>
 }
 
 export function createRpcProxyClient<Functions extends RpcFunctions>(url: string, method: RequestInit['method']): RpcClient<Functions>
