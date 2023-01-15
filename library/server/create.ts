@@ -1,13 +1,13 @@
-import type { RpcFunction, RpcInputParser } from "../types"
-
 if (typeof window !== 'undefined') throw new Error('RPC should only be created on the server side.')
 
+export type RpcInputParser<IN extends any[]> = (input: IN) => IN
+export type RpcFunction = ReturnType<typeof createRpcFunction>
+export type RpcFunctions<K extends string = string> = Record<K, RpcFunction>
+
 export function createRpcFunction<
-    IN extends any[] = any[],
-    OUT = any,
-    P extends RpcInputParser<IN> = RpcInputParser<IN>,
-    F extends (...input: IN) => Promise<OUT> = (...input: IN) => Promise<OUT>
->(parser: P, rpc: F): RpcFunction<IN, OUT, P, F>
+    P extends RpcInputParser<any[]>,
+    F extends (...input: Parameters<P>[0]) => Promise<any>
+>(parser: P, rpc: F)
 {
-    return { parser, rpc } as RpcFunction<IN, OUT, P, F>
+    return { parser, rpc }
 }

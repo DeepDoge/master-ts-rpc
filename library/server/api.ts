@@ -1,4 +1,4 @@
-import type { RpcFunctions } from "../types"
+import type { RpcFunctions } from "./create"
 
 export type RpcApiHandler<Functions extends RpcFunctions> = ReturnType<typeof createRpcApiHandler<Functions>>
 export function createRpcApiHandler<Functions extends RpcFunctions>(functions: Functions)

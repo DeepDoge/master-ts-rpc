@@ -1,6 +1,6 @@
 import { rpcJson } from "../common/json"
 import type { RpcApiHandler } from "../server/api"
-import type { RpcFunctions } from "../types"
+import type { RpcFunctions } from "../server/create"
 
 export type RpcClient<Functions extends RpcFunctions> = {
     [K in keyof Functions]: (input: Parameters<Functions[K]['parser']>[0]) => ReturnType<Functions[K]['rpc']>
@@ -26,10 +26,10 @@ export function createRpcProxyClient<Functions extends RpcFunctions>(url: string
 export function createRpcLocalClient<Functions extends RpcFunctions>(apiHandler: Promise<RpcApiHandler<Functions>>): RpcClient<Functions>
 {
     return new Proxy({} as RpcClient<Functions>, {
-        get: (_, key: string) => async (args: any) =>
+        get: (_, key: any) => async (input: any) =>
         {
             const handler = await apiHandler
-            return await handler({ key, args })
+            return await handler({ key, input })
         }
     })
 }

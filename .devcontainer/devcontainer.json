@@ -9,7 +9,8 @@
 			"extensions": [
 				"GitHub.copilot",
 				"eamodio.gitlens",
-				"heltonricardo.heltonricardo-vscode-organize-and-format"
+				"heltonricardo.heltonricardo-vscode-organize-and-format",
+				"Orta.vscode-twoslash-queries"
 			]
 		}
 	}
