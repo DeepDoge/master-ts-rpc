@@ -8,7 +8,7 @@ npm i https://github.com/DeepDoge/master-rpc.git -D
 ```
 
 # Usage
-## Example Usage with SveltKit
+## Example Usage with SvelteKit
 We first need rpc functions to be defined. 
 
 `createRpcFunction` takes two parameters, the parser and the rpc function itself.
