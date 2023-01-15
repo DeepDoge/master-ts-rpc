@@ -6,7 +6,7 @@ export type RpcFunctions<K extends string = string> = Record<K, RpcFunction>
 
 export function createRpcFunction<
     P extends RpcInputParser<any>,
-    F extends (...input: Parameters<P>[0]) => Promise<any>
+    F extends (...input: ReturnType<P>) => Promise<any>
 >(parser: P, rpc: F)
 {
     return { parser, rpc }
