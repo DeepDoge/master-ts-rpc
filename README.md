@@ -1,11 +1,23 @@
 # MASTER RPC
-Master RPC is a simple RPC library for TypeScript. It is designed to be used in a NodeJS environment.
+Master RPC is a simple RPC library for TypeScript. It is designed to be used in a NodeJS environment.<br/>
 It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct custom ones etc, any.
+
+**This project is still in development and breaking changes might occur.**<br/>
 
 # Install
 ```bash
 npm i https://github.com/DeepDoge/master-rpc.git -D
 ```
+
+# Why master-rpc?
+I have been building RPCs around REST way before tRPC became popular.<br/>
+While I believe tRPC is the right direction, because I believe RPC is the right direction, I still think tRPC is way too complex.<br/>
+Because you probably just wanna run functions from the server, on client, like they are on the client.<br/>
+tRPC has stuff like `query`, `mutate`, but all you actually need is, `await rpc.myFunction(foo, bar)`.<br/>
+So I just made my own simple RPC module for it.<br/>
+Querying and etc, should not be part of the RPC library, it should be build around the RPC library and should be separate.<br/>
+And RPC requests should be simple enough that they can be called manually from clients using different languages without the need for this library.<br/>
+You don't have to make simple things complex.
 
 # Usage
 ## Example Usage with SvelteKit
