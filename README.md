@@ -1,6 +1,6 @@
 # MASTER RPC
 Master RPC is a simple RPC library for TypeScript. It is designed to be used in a NodeJS environment.<br/>
-It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct custom ones etc, any.
+It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [MasterValidator](https://github.com/DeepDoge/master-validator), custom ones etc, any.
 
 **This project is still in development and breaking changes might occur.**<br/>
 
