@@ -1,5 +1,5 @@
 export const rpcStringify = {
-	parse(json: string) {
+	parse(json: string): unknown {
 		return JSON.parse(json, (_, value) => {
 			if (typeof value === "string") {
 				switch (value[0]) {
@@ -14,7 +14,7 @@ export const rpcStringify = {
 			return value
 		})
 	},
-	stringify(value: any) {
+	stringify(value: unknown) {
 		return JSON.stringify(value, (_, value) => {
 			if (value instanceof Date) return `d${value.toISOString()}`
 			if (typeof value === "string") return `s${value}`
