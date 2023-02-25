@@ -1,12 +1,14 @@
 import type { Rpc } from "./create"
 
-export type Rpcs = Record<string, Rpc<any, any>>
-export type RpcHandler<Functions extends Rpcs> = ReturnType<typeof createRpcHandler<Functions>>
-export function createRpcHandler<Functions extends Rpcs>(functions: Functions) {
-	const handler = async <K extends keyof Functions>(data: { key: K; args: Parameters<Functions[K]["parser"]> }) => {
-		const { parser, func } = functions[data.key] as Functions[K]
-		const validated = parser(data.args)
-		return (await func(...validated)) ?? null
+export type Rpcs = Record<string, Rpc<unknown[], unknown>>
+export type RpcHandler<T extends Rpcs> = {
+	<K extends keyof T>(key: K, args: Parameters<T[K]["func"]>): Promise<Awaited<ReturnType<T[K]["func"]>>>
+}
+export function createRpcHandler<T extends Rpcs>(functions: T) {
+	const handler: RpcHandler<T> = async (key, args) => {
+		const { parser, func } = functions[key]!
+		const validated = parser(args)
+		return ((await func(...validated)) ?? null) as never
 	}
 
 	return handler
