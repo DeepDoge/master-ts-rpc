@@ -1,2 +1,8 @@
-README.md
-.gitignore
+/.gitignore
+
+/.vscode
+/.devcontainer
+/.github
+/.gitignore
+/.prettierrc.json
+/.README.md

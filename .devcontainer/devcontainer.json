@@ -6,12 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:0-18",
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"GitHub.copilot",
-				"eamodio.gitlens",
-				"heltonricardo.heltonricardo-vscode-organize-and-format",
-				"Orta.vscode-twoslash-queries"
-			]
+			"extensions": ["eamodio.gitlens", "heltonricardo.heltonricardo-vscode-organize-and-format", "esbenp.prettier-vscode"]
 		}
 	}
 	// Features to add to the dev container. More info: https://containers.dev/features.

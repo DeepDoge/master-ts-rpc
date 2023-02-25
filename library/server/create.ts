@@ -1,13 +1,19 @@
-if (typeof window !== 'undefined') throw new Error('RPC should only be created on the server side.')
+if (typeof window !== "undefined") throw new Error("RPC should only be created on the server side.")
 
-export type RpcInputParser<Args extends any[]> = (args: Args) => Args
-export type RpcFunction = ReturnType<typeof createRpcFunction>
-export type RpcFunctions = Record<string, RpcFunction>
+export type RpcInputParser<Input extends any[], Output extends any[]> = {
+	(args: Input): Output
+}
+export type RpcFunction<Parser extends RpcInputParser<any, any>, Return> = {
+	(...args: ReturnType<Parser>): Return
+}
+export type Rpc<Parser extends RpcInputParser<any, any>, Func extends RpcFunction<Parser, any>> = {
+	parser: Parser
+	rpc: Func
+}
 
-export function createRpcFunction<
-    P extends RpcInputParser<any>,
-    F extends (...args: ReturnType<P>) => Promise<any>
->(parser: P, rpc: F)
-{
-    return { parser, rpc }
+export function createRpc<Parser extends RpcInputParser<any, any>, Func extends (...args: ReturnType<Parser>) => Promise<any>>(
+	parser: Parser,
+	rpc: Func
+): Rpc<Parser, Func> {
+	return { parser, rpc }
 }
