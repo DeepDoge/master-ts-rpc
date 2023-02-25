@@ -95,7 +95,7 @@ _src/routes/rpc/+server.ts_
 import { rpcHandler } from "$/plugin/rpc/server"
 import { z } from "zod"
 import type { RequestHandler } from "./$types"
-import { rpcJson } from "master-rpc/library/common/json"
+import { rpcStringify } from "master-rpc/library/common/stringify"
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
