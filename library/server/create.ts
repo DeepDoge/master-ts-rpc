@@ -8,12 +8,12 @@ export type RpcFunction<Parser extends RpcInputParser<any, any>, Return> = {
 }
 export type Rpc<Parser extends RpcInputParser<any, any>, Func extends RpcFunction<Parser, any>> = {
 	parser: Parser
-	rpc: Func
+	func: Func
 }
 
-export function createRpc<Parser extends RpcInputParser<any, any>, Func extends (...args: ReturnType<Parser>) => Promise<any>>(
+export function createRpc<Parser extends RpcInputParser<any, any>, Return>(
 	parser: Parser,
-	rpc: Func
-): Rpc<Parser, Func> {
-	return { parser, rpc }
+	func: RpcFunction<Parser, Return>
+): Rpc<Parser, typeof func> {
+	return { parser, func }
 }
