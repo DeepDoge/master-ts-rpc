@@ -6,11 +6,18 @@ export type RpcInputParser<Args extends unknown[]> = {
 export type RpcFunction<Args extends unknown[], Return> = {
 	(...args: Args): Return
 }
-export type Rpc<Args extends unknown[], Func extends RpcFunction<Args, any>> = {
+export type Rpc<Args extends any[], Return> = {
 	parser: RpcInputParser<Args>
-	func: Func
+	func: RpcFunction<Args, Return>
 }
 
-export function createRpc<T extends Rpc<any, any>>(rpc: T): T {
-	return rpc
+export function createRpc<Args extends unknown[]>(parser: RpcInputParser<Args>) {
+	return {
+		function<Return>(func: RpcFunction<Args, Return>): Rpc<Args, Return> {
+			return {
+				parser,
+				func,
+			}
+		},
+	}
 }
