@@ -1,6 +1,6 @@
 import type { Rpc } from "./create"
 
-export type Rpcs = Record<string, Rpc<unknown[], unknown>>
+export type Rpcs = Record<string, Rpc<any, any>>
 export type RpcHandler<T extends Rpcs> = {
 	<K extends keyof T>(key: K, args: Parameters<T[K]["func"]>): Promise<Awaited<ReturnType<T[K]["func"]>>>
 }
