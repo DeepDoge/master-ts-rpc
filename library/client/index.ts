@@ -1,4 +1,4 @@
-import { rpcStringify } from "../common/json"
+import { rpcStringify } from "../common/stringify"
 import type { RpcHandler, Rpcs } from "../server/api"
 
 export type RpcClient<Functions extends Rpcs> = {
