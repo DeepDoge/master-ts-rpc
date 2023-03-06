@@ -13,7 +13,7 @@ npm i https://github.com/DeepDoge/master-rpc.git -D
 
 # Why master-rpc?
 
-I have been building RPCs around REST way before tRPC became popular.<br/>
+I have been building RPCs way before tRPC became popular.<br/>
 While I believe tRPC is the right direction, because I believe RPC is the right direction, I still think tRPC is way too complex.<br/>
 Because you probably just wanna run functions from the server, on client, like they are on the client.<br/>
 tRPC has stuff like `query`, `mutate`, but all you actually need is, `await rpc.myFunction(foo, bar)`.<br/>
