@@ -32,7 +32,6 @@ You don't have to make simple things complex.
 - It's just a library that helps you build a rpc system around your project FAST and EASY. It just gives you some pieces, that you can place and configure any way you want.
 
 ## Cons
-- You can't use many heap types, because some imposimple to stringify and parse. But that's true for any API library.
 - I have been sitting here and thinking, can't find anything bad, maybe add some later.
 
 # Usage
