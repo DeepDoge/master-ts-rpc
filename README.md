@@ -23,7 +23,7 @@ And RPC requests should be simple enough that they can be called manually from c
 You don't have to make simple things complex.
 
 ## Pros
-- While providing a stringifier and parser method built-in, it also let's you use any other stringifier and parser. You don't have to use JSON.
+~~- While providing a stringifier and parser method built-in, it also let's you use any other stringifier and parser. You don't have to use JSON.~~
 - It let's you create multiple RpcHandlers and Clients so you don't have to put everything in one place.
 - You can call your rpc functions from anywhere, server-side, client-side etc. 
 - Rpc functions are just like any other function you don't have to think about you are using a rpc function, as long as stringifier and parser can handle all of the parameters of the function.
