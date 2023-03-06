@@ -139,3 +139,5 @@ After these we can just use our rpc functions anywhere in the code like this:
 ```ts
 rpc.greeating({ names: ["World", "Svelte"] }) // Promise<"Hello World and Svelte">
 ```
+
+You can create multiple rpc clients with rpc handlers with different routes.
