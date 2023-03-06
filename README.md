@@ -1,6 +1,6 @@
 # MASTER RPC
 
-Master RPC is a simple RPC library for TypeScript. It is designed to be used in a NodeJS environment.<br/>
+Master RPC is a simple RPC library for TypeScript.<br/>
 It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [MasterValidator](https://github.com/DeepDoge/master-validator), custom ones etc, any.
 
 **This project is still in development and breaking changes might occur.**<br/>
@@ -21,6 +21,19 @@ So I just made my own simple RPC module for it.<br/>
 Querying and etc, should not be part of the RPC library, it should be build around the RPC library and should be separate.<br/>
 And RPC requests should be simple enough that they can be called manually from clients using different languages without the need for this library.<br/>
 You don't have to make simple things complex.
+
+## Pros
+- While providing a stringifier and parser method built-in, it also let's you use any other stringifier and parser. You don't have to use JSON.
+- It let's you create multiple RpcHandlers and Clients so you don't have to put everything in one place.
+- You can call your rpc functions from anywhere, server-side, client-side etc. 
+- Rpc functions are just like any other function you don't have to think about you are using a rpc function, as long as stringifier and parser can handle all of the parameters of the function.
+- It simple, and small.
+- Let's you configure and setup it any way you want. For example in this README.md file I don't show it but for example for a project I'm working on I use master-rpc and I just group every time into a single file, and use async import and SSR check for vite to treeshake the rpc functions from client-side. Which works great. It just gives you some stuff, that you can place and configure any way you want. 
+- It's just a library that helps you build a rpc system around your project fast and easy. 
+
+## Cons
+- You can't use many heap types, because some imposimple to stringify and parse. But that's true for any API library.
+- I have been sitting here and thinking, can't find anything bad, maybe add some later.
 
 # Usage
 
