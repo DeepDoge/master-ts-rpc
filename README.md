@@ -8,7 +8,7 @@ It works with any framework or without framework, can be used with any verifier,
 # Install
 
 ```bash
-npm i https://github.com/DeepDoge/master-rpc.git -D
+npm i https://github.com/DeepDoge/master-ts-rpc.git -D
 ```
 
 # Why master-rpc?
