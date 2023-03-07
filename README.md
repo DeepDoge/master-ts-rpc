@@ -1,6 +1,6 @@
-# MASTER RPC
+# MASTER-TS RPC
 
-Master RPC is a simple RPC library for TypeScript.<br/>
+This is a simple RPC library for TypeScript.<br/>
 It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [MasterValidator](https://github.com/DeepDoge/master-validator), custom ones etc, any.
 
 **This project is still in development and breaking changes might occur.**<br/>
@@ -28,7 +28,7 @@ You don't have to make simple things complex.
 - You can call your rpc functions from anywhere, server-side, client-side etc. 
 - Rpc functions are just like any other function you don't have to think about you are using a rpc function, as long as stringifier and parser can handle all of the parameters of the function.
 - It simple, and small.
-- Let's you configure and setup it any way you want. For example in this README.md file I don't show it but for example for a project I'm working on I use master-rpc and I just group some stuff based on context a single file including the rpc functions. For this use async imports and SSR check for vite to treeshake the rpc functions from client-side. Which works great. 
+- Let's you configure and setup it any way you want. For example in this README.md file I don't show it but for example for a project I'm working on I use this and I just group some stuff based on context a single file including the rpc functions. For this use async imports and SSR check for vite to treeshake the rpc functions from client-side. Which works great. 
 - It's just a library that helps you build a rpc system around your project FAST and EASY. It just gives you some pieces, that you can place and configure any way you want.
 
 ## Cons
