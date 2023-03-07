@@ -1,7 +1,7 @@
-# MASTER-TS RPC
+# Master-TS RPC
 
 This is a simple RPC library for TypeScript.<br/>
-It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [MasterValidator](https://github.com/DeepDoge/master-validator), custom ones etc, any.
+It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [Master-TS Types](https://github.com/DeepDoge/master-ts-types), custom ones etc, any.
 
 **This project is still in development and breaking changes might occur.**<br/>
 
@@ -11,7 +11,7 @@ It works with any framework or without framework, can be used with any verifier,
 npm i https://github.com/DeepDoge/master-ts-rpc.git -D
 ```
 
-# Why master-rpc?
+# Why Master-TS RPC?
 
 I have been building RPCs way before tRPC became popular.<br/>
 While I believe tRPC is the right direction, because I believe RPC is the right direction, I still think tRPC is way too complex and over-engineered.<br/>
@@ -48,12 +48,12 @@ _src/plugin/rpc/functions/greeting.ts_
 import { createRpc } from "master-rpc/library/server/create"
 
 export const greetingRpcFunction = createRpc((args: [{ names: string[] }]) => {
-	if (!(args?.[0]?.names instanceof Array)) throw new Error("Names must be an array")
-	if (args.some(({ names }) => names.some((name) => typeof name !== "string"))) throw new Error("Names must be strings")
-	if (args.some(({ names }) => names.length === 0)) throw new Error("Names cannot be empty")
-	return args
+    if (!(args?.[0]?.names instanceof Array)) throw new Error("Names must be an array")
+    if (args.some(({ names }) => names.some((name) => typeof name !== "string"))) throw new Error("Names must be strings")
+    if (args.some(({ names }) => names.length === 0)) throw new Error("Names cannot be empty")
+    return args
 }).function(async ({ names }) => {
-	return `Hello ${names.join(" and ")}`
+    return `Hello ${names.join(" and ")}`
 })
 ```
 
@@ -64,11 +64,11 @@ import { createRpc } from "master-rpc/library/server/create"
 import { z } from "zod"
 
 export const greetingRpcFunction = createRpc((args: unknown[]) => [
-	z
-		.object({
-			names: z.string().array(),
-		})
-		.parse(args[0]),
+    z
+        .object({
+            names: z.string().array(),
+        })
+        .parse(args[0]),
 ]).function(async ({ names }) => `Hello ${names.join(" and ")}`)
 ```
 
@@ -84,7 +84,7 @@ import type { Rpcs } from "master-rpc/library/server/api"
 import { greetingRpcFunction } from "./greeting"
 
 export const rpcs = {
-	greeting: greetingRpcFunction,
+    greeting: greetingRpcFunction,
 } satisfies Rpcs
 ```
 
@@ -110,16 +110,16 @@ import type { RequestHandler } from "./$types"
 import { rpcStringify } from "master-rpc/library/common/stringify"
 
 export const POST: RequestHandler = async ({ request }) => {
-	try {
-		const data = rpcJson.parse(await request.text())
-		const result = await rpcHandler(data)
-		return new Response(rpcJson.stringify(result), { headers: { "Content-Type": "application/json" } })
-	} catch (error) {
-		if (error instanceof z.ZodError)
-			return new Response(error.errors.map((errorItem) => `${errorItem.path.join(".")} ${errorItem.message}`).join("\n"), { status: 400 })
-		if (error instanceof Error) return new Response(error.message, { status: 500 })
-		return new Response("Unknown error", { status: 500 })
-	}
+    try {
+        const data = rpcJson.parse(await request.text())
+        const result = await rpcHandler(data)
+        return new Response(rpcJson.stringify(result), { headers: { "Content-Type": "application/json" } })
+    } catch (error) {
+        if (error instanceof z.ZodError)
+            return new Response(error.errors.map((errorItem) => `${errorItem.path.join(".")} ${errorItem.message}`).join("\n"), { status: 400 })
+        if (error instanceof Error) return new Response(error.message, { status: 500 })
+        return new Response("Unknown error", { status: 500 })
+    }
 }
 ```
 
@@ -136,9 +136,9 @@ import { createRpcLocalClient, createRpcProxyClient } from "master-rpc/library/c
 import type { rpcs } from "$/plugins/rpc/functions"
 
 export function createRpcClient() {
-	if (typeof window !== "undefined") return createRpcProxyClient<typeof rpcs>("/rpc", "POST")
-	const handlerPromise = import("./server").then((m) => m.rpcHandler)
-	return createRpcLocalClient<typeof rpcs>(handlerPromise)
+    if (typeof window !== "undefined") return createRpcProxyClient<typeof rpcs>("/rpc", "POST")
+    const handlerPromise = import("./server").then((m) => m.rpcHandler)
+    return createRpcLocalClient<typeof rpcs>(handlerPromise)
 }
 
 export const rpc = createRpcClient()
