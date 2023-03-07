@@ -1,7 +1,7 @@
 # Master-TS RPC
 
-This is a simple RPC library for TypeScript.<br/>
-It works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [Master-TS Types](https://github.com/DeepDoge/master-ts-types), custom ones etc, any.
+A simple RPC library for TypeScript.<br/>
+Works with any framework or without framework, can be used with any verifier, Zod, SuperStruct, [Master-TS Types](https://github.com/DeepDoge/master-ts-types), custom ones etc, any.
 
 **This project is still in development and breaking changes might occur.**<br/>
 
